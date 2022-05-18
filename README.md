@@ -1,4 +1,4 @@
-# solana-program-library-anchor-idl
+# Solana Program Library Anchor IDLs
 Anchor IDLs for the Solana Program Library
 
 This repository is split into two main folders:
