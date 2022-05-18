@@ -1,3 +1,5 @@
+// This code is only used to generate the IDL for the name service program.
+
 use anchor_lang::prelude::*;
 
 declare_id!("namesLPneVptA9Z5rqUDD9tMTWEJwofgaYwp8cawRkX");
