@@ -1,0 +1,119 @@
+{
+  "version": "1.0.5",
+  "name": "associated_token_account",
+  "instructions": [
+    {
+      "name": "create",
+      "accounts": [
+        {
+          "name": "funding",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "associatedToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "wallet",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMintNew",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "splToken",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "createIdempotent",
+      "accounts": [
+        {
+          "name": "funding",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "associatedToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "wallet",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMintNew",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "splToken",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "recoverNested",
+      "accounts": [
+        {
+          "name": "nestedAssociatedToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMintNested",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "walletAssociated",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMintOwner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "walletOwner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "splToken",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ]
+}
