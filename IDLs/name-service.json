@@ -1,0 +1,127 @@
+{
+  "version": "2.1.0",
+  "name": "name_service",
+  "instructions": [
+    {
+      "name": "create",
+      "accounts": [
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "funcAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "nameRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "accountOwner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "accountClass",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "parentNameRecord",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "parentOwner",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "hashedName",
+          "type": "bytes"
+        },
+        {
+          "name": "lamports",
+          "type": "u64"
+        },
+        {
+          "name": "space",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "accounts": [
+        {
+          "name": "nameRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "accountOwner",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "offset",
+          "type": "u32"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ]
+    },
+    {
+      "name": "transfer",
+      "accounts": [
+        {
+          "name": "nameRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "accountOwner",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "newOwner",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "delete",
+      "accounts": [
+        {
+          "name": "nameRecord",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "accountOwner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "refundAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ]
+}
