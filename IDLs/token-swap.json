@@ -115,8 +115,8 @@
           "isSigner": false
         },
         {
-          "name": "hostFeeAccount",
-          "isMut": true,
+          "name": "remainingAccounts",
+          "isMut": false,
           "isSigner": false
         }
       ],
