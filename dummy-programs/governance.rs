@@ -127,6 +127,7 @@ pub struct CreateRealm<'info> {
     system: AccountInfo<'info>,
     spl_token: AccountInfo<'info>,
     sysvar_rent: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNTS **THESE DO NOT APPEAR IN THE IDL**
     council_token_mint: AccountInfo<'info>,
     #[account(mut)]
     council_token_holding_account: AccountInfo<'info>,
@@ -134,6 +135,8 @@ pub struct CreateRealm<'info> {
     max_community_voter_weight_id: AccountInfo<'info>,
     #[account(mut)]
     realm_config_account: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -192,7 +195,10 @@ pub struct CreateGovernance<'info> {
     #[account(signer)]
     governance_auth: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -214,7 +220,10 @@ pub struct CreateProgramGovernance<'info> {
     #[account(signer)]
     governance_auth: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -233,7 +242,10 @@ pub struct CreateProposal<'info> {
     payer: AccountInfo<'info>,
     system: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -317,7 +329,12 @@ pub struct SignOffProposal<'info> {
     proposal_account: AccountInfo<'info>,
     #[account(signer)]
     signatory: AccountInfo<'info>,
+    // REQUIRED ONLY WHEN THE OWNER SIGNS OFF THE PROPOSAL
     token_owner_record_account: AccountInfo<'info>,
+    /* REQUIRED ONLY WHEN NON-OWNER SIGNS OFF THE PROPOSAL
+    #[account(mut)]
+    signatory_record_accound: AccountInfo<'info>,
+    */
 }
 
 #[derive(Accounts)]
@@ -341,8 +358,11 @@ pub struct CastVote<'info> {
     payer: AccountInfo<'info>,
     system: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     voter_weight_record: AccountInfo<'info>,
     max_voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -357,7 +377,10 @@ pub struct FinalizeVote<'info> {
     token_owner_record_proposal: AccountInfo<'info>,
     governing_token_mint: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     max_voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -371,10 +394,13 @@ pub struct RelinquishVote<'info> {
     #[account(mut)]
     proposal_vote_record: AccountInfo<'info>,
     governing_token_mint: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     #[account(signer)]
     governance_auth: AccountInfo<'info>,
     #[account(mut)]
     beneficiary: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -384,6 +410,7 @@ pub struct ExecuteTransaction<'info> {
     proposal_account: AccountInfo<'info>,
     #[account(mut)]
     proposal_tx: AccountInfo<'info>,
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -404,7 +431,10 @@ pub struct CreateMintGovernance<'info> {
     #[account(signer)]
     governance_auth: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -425,7 +455,10 @@ pub struct CreateTokenGovernance<'info> {
     #[account(signer)]
     governance_auth: AccountInfo<'info>,
     realm_config: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     voter_weight_record: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
@@ -461,16 +494,21 @@ pub struct SetRealmConfig<'info> {
     realm_account: AccountInfo<'info>,
     #[account(signer)]
     realm_authority: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     council_token_mint: AccountInfo<'info>,
     #[account(mut)]
     council_token_holding_account: AccountInfo<'info>,
+    */
     system: AccountInfo<'info>,
     #[account(mut)]
     realm_config_account: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNT **THESE DO NOT APPEAR IN THE IDL**
     community_voter_weight_id: AccountInfo<'info>,
     max_community_voter_weight_id: AccountInfo<'info>,
     #[account(signer)]
     payer: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
