@@ -333,7 +333,7 @@ pub struct SignOffProposal<'info> {
     token_owner_record_account: AccountInfo<'info>,
     /* REQUIRED ONLY WHEN NON-OWNER SIGNS OFF THE PROPOSAL
     #[account(mut)]
-    signatory_record_accound: AccountInfo<'info>,
+    signatory_record_account: AccountInfo<'info>,
     */
 }
 
