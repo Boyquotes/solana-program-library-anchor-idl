@@ -1,0 +1,131 @@
+{
+  "version": "0.1.0",
+  "name": "math",
+  "instructions": [
+    {
+      "name": "preciseSquareRoot",
+      "accounts": [],
+      "args": [
+        {
+          "name": "radicand",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "squareRootU64",
+      "accounts": [],
+      "args": [
+        {
+          "name": "radicand",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "squareRootU128",
+      "accounts": [],
+      "args": [
+        {
+          "name": "radicand",
+          "type": "u128"
+        }
+      ]
+    },
+    {
+      "name": "u64Multiply",
+      "accounts": [],
+      "args": [
+        {
+          "name": "multiplicand",
+          "type": "u64"
+        },
+        {
+          "name": "multiplier",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "u64Divide",
+      "accounts": [],
+      "args": [
+        {
+          "name": "dividend",
+          "type": "u64"
+        },
+        {
+          "name": "divisor",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "f32Multiply",
+      "accounts": [],
+      "args": [
+        {
+          "name": "multiplicand",
+          "type": "f32"
+        },
+        {
+          "name": "multiplier",
+          "type": "f32"
+        }
+      ]
+    },
+    {
+      "name": "f32Divide",
+      "accounts": [],
+      "args": [
+        {
+          "name": "dividend",
+          "type": "f32"
+        },
+        {
+          "name": "divisor",
+          "type": "f32"
+        }
+      ]
+    },
+    {
+      "name": "f32Exponentiate",
+      "accounts": [],
+      "args": [
+        {
+          "name": "base",
+          "type": "f32"
+        },
+        {
+          "name": "exponent",
+          "type": "f32"
+        }
+      ]
+    },
+    {
+      "name": "f32NaturalLog",
+      "accounts": [],
+      "args": [
+        {
+          "name": "argument",
+          "type": "f32"
+        }
+      ]
+    },
+    {
+      "name": "f32NormalCdf",
+      "accounts": [],
+      "args": [
+        {
+          "name": "argument",
+          "type": "f32"
+        }
+      ]
+    },
+    {
+      "name": "noop",
+      "accounts": [],
+      "args": []
+    }
+  ]
+}
