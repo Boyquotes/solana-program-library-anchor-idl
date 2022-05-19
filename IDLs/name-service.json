@@ -11,7 +11,7 @@
           "isSigner": false
         },
         {
-          "name": "funcAccount",
+          "name": "fundingAccount",
           "isMut": true,
           "isSigner": true
         },
@@ -26,19 +26,14 @@
           "isSigner": false
         },
         {
-          "name": "accountClass",
-          "isMut": false,
-          "isSigner": true
-        },
-        {
           "name": "parentNameRecord",
           "isMut": false,
           "isSigner": false
         },
         {
-          "name": "parentOwner",
+          "name": "remainingAccounts",
           "isMut": false,
-          "isSigner": true
+          "isSigner": false
         }
       ],
       "args": [
