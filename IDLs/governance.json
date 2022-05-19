@@ -46,28 +46,8 @@
           "isSigner": false
         },
         {
-          "name": "councilTokenMint",
+          "name": "remainingAccounts",
           "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "councilTokenHoldingAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "communityVoterWeightId",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "maxCommunityVoterWeightId",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "realmConfigAccount",
-          "isMut": true,
           "isSigner": false
         }
       ],
@@ -253,7 +233,7 @@
           "isSigner": false
         },
         {
-          "name": "voterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -331,7 +311,7 @@
           "isSigner": false
         },
         {
-          "name": "voterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -398,7 +378,7 @@
           "isSigner": false
         },
         {
-          "name": "voterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -731,12 +711,7 @@
           "isSigner": false
         },
         {
-          "name": "voterWeightRecord",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "maxVoterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -784,7 +759,7 @@
           "isSigner": false
         },
         {
-          "name": "maxVoterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -825,13 +800,8 @@
           "isSigner": false
         },
         {
-          "name": "governanceAuth",
+          "name": "remainingAccounts",
           "isMut": false,
-          "isSigner": true
-        },
-        {
-          "name": "beneficiary",
-          "isMut": true,
           "isSigner": false
         }
       ],
@@ -853,6 +823,11 @@
         {
           "name": "proposalTx",
           "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "remainingAccounts",
+          "isMut": false,
           "isSigner": false
         }
       ],
@@ -917,7 +892,7 @@
           "isSigner": false
         },
         {
-          "name": "voterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -994,7 +969,7 @@
           "isSigner": false
         },
         {
-          "name": "voterWeightRecord",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
         }
@@ -1103,16 +1078,6 @@
           "isSigner": true
         },
         {
-          "name": "councilTokenMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "councilTokenHoldingAccount",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
           "name": "system",
           "isMut": false,
           "isSigner": false
@@ -1123,19 +1088,9 @@
           "isSigner": false
         },
         {
-          "name": "communityVoterWeightId",
+          "name": "remainingAccounts",
           "isMut": false,
           "isSigner": false
-        },
-        {
-          "name": "maxCommunityVoterWeightId",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "payer",
-          "isMut": false,
-          "isSigner": true
         }
       ],
       "args": [
