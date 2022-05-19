@@ -1,4 +1,5 @@
 // This code is only used to generate the IDL for the name service program.
+// Assumes 'Pubkey::default()'
 
 use anchor_lang::prelude::*;
 
@@ -30,16 +31,20 @@ pub mod name_service {
 pub struct Create<'info> {
     system_program: AccountInfo<'info>,
     #[account(mut, signer)]
-    func_account: AccountInfo<'info>,
+    funding_account: AccountInfo<'info>,
     #[account(mut)]
     name_record: AccountInfo<'info>,
     account_owner: AccountInfo<'info>,
+    /* NOT REQUIRED IF 'Pubkey::default()'
     #[account(signer)]
     account_class: AccountInfo<'info>,
+    */
     parent_name_record: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNTS **THESE DO NOT APPEAR IN THE IDL**
     #[account(signer)]
     parent_owner: AccountInfo<'info>,
-    
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
