@@ -67,8 +67,11 @@ pub struct Swap<'info> {
     #[account(mut)]
     fee_account: AccountInfo<'info>,
     program_id: AccountInfo<'info>,
+    /* OPTIONAL ACCOUNTS **THESE DO NOT APPEAR IN THE IDL**
     #[account(mut)]
     host_fee_account: AccountInfo<'info>,
+    */
+    remaining_accounts: AccountInfo<'info>,
 }
 
 #[derive(Accounts)]
