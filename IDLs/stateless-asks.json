@@ -1,0 +1,28 @@
+{
+  "version": "0.1.0",
+  "name": "stateless_asks",
+  "instructions": [
+    {
+      "name": "acceptOffer",
+      "accounts": [],
+      "args": [
+        {
+          "name": "hasMetadata",
+          "type": "bool"
+        },
+        {
+          "name": "makerSize",
+          "type": "u64"
+        },
+        {
+          "name": "takerSize",
+          "type": "u64"
+        },
+        {
+          "name": "bumpSeed",
+          "type": "u8"
+        }
+      ]
+    }
+  ]
+}
