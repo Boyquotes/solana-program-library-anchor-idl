@@ -1,0 +1,99 @@
+{
+  "version": "1.0.0",
+  "name": "feature_proposal",
+  "instructions": [
+    {
+      "name": "propose",
+      "accounts": [
+        {
+          "name": "funding",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "unallocatedFp",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "distributorToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "acceptanceToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "featureId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "splToken",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tokensToMint",
+          "type": "u64"
+        },
+        {
+          "name": "acceptanceCriteria",
+          "type": {
+            "defined": "AcceptanceCriteria"
+          }
+        }
+      ]
+    },
+    {
+      "name": "tally",
+      "accounts": [
+        {
+          "name": "featureProposal",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "acceptanceToken",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "derivedFeatureId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ]
+}
