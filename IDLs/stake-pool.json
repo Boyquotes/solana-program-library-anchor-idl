@@ -1,0 +1,918 @@
+{
+  "version": "0.6.4",
+  "name": "stake_pool",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "newPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "manager",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "staker",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "managerFeePool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "remainingAccounts",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fee",
+          "type": {
+            "defined": "Fee"
+          }
+        },
+        {
+          "name": "withdrawalFee",
+          "type": {
+            "defined": "Fee"
+          }
+        },
+        {
+          "name": "depositFee",
+          "type": {
+            "defined": "Fee"
+          }
+        },
+        {
+          "name": "referralFee",
+          "type": "u8"
+        },
+        {
+          "name": "maxValidators",
+          "type": "u32"
+        }
+      ]
+    },
+    {
+      "name": "addValidatorToPool",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "staker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "funding",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "addStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "validator",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "history",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "config",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stake",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "removeValidatorFromPool",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "staker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "newWithdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "removeStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "transientStake",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "destinationStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "decreaseValidatorStake",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakePoolStaker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "validatorList",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "canonicalStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "transientStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stake",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "lamports",
+          "type": "u64"
+        },
+        {
+          "name": "transientStakeSeed",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "increaseValidatorStake",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakePoolStaker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "validatorList",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "transientStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "validator",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "validatorVote",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "history",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "config",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stake",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "lamports",
+          "type": "u64"
+        },
+        {
+          "name": "transientStakeSeed",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "setPreferredValidator",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakePoolStaker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "validatorList",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "validatorType",
+          "type": {
+            "defined": "PreferredValidatorType"
+          }
+        },
+        {
+          "name": "validatorVoteAddress",
+          "type": {
+            "option": "publicKey"
+          }
+        }
+      ]
+    },
+    {
+      "name": "updateValidatorListBalance",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "history",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stake",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "remainingAccounts",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "startIndex",
+          "type": "u32"
+        },
+        {
+          "name": "noMerge",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "updateStakePoolBalance",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "feeReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "cleanupRemovedValidatorEntries",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "depositStake",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "depositAuth",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "joinStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "validatorStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "receiveUser",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "referralReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "history",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdrawStake",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "stakeListStorage",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "validatorOrReserve",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "receiveWithdrawal",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "newWithdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "transferAuth",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "burnFrom",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stakeProgramId",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "setManager",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "manager",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "newManager",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "newManagerFee",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "lamports",
+          "type": "u64"
+        },
+        {
+          "name": "transientStakeSeed",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "setFee",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "manager",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "fee",
+          "type": {
+            "defined": "FeeType"
+          }
+        }
+      ]
+    },
+    {
+      "name": "setStaker",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "manager",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "newStakerPubkey",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "depositSol",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "lamportProvider",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "receiveUser",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "referralReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "system",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "remainingAccounts",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "setFundingAuthority",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "manager",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "newAuthPubkey",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "data",
+          "type": {
+            "defined": "FundingType"
+          }
+        }
+      ]
+    },
+    {
+      "name": "withdrawSol",
+      "accounts": [
+        {
+          "name": "stakePool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "withdrawAuth",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "transferAuth",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "burnFrom",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveStake",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "reserveLamportReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "feeReceive",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "history",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "stake",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "remainingAccounts",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ]
+}
